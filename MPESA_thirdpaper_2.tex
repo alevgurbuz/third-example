@@ -1,0 +1,395 @@
+
+% this draft is after Billy read it. Dec 16.
+
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{apacite}
+\usepackage{natbib}
+\usepackage{float}
+\usepackage{caption}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[titletoc]{appendix}
+\usepackage{longtable}
+\usepackage{siunitx}
+%\newcolumntype{d}[1]{D{.}{.}{#1}}
+
+\usepackage{comment}
+\usepackage{verbatim}  
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\usepackage{setspace}
+\renewcommand{\baselinestretch}{1.65} 
+
+\usepackage[normalem]{ulem}
+\usepackage[flushleft]{threeparttable}
+\usepackage{caption}
+\usepackage{comment}
+\interfootnotelinepenalty=10000
+
+\author{Alev G{\"{u}}rb{\"{u}}z\footnote{Ph.D. Candidate, Department of Economics, Georgetown University. Email: ag796@georgetown.edu}}
+\title{An Empirical Analysis of \\  Mobile Money and Saving Groups in Rural Kenya}
+\date{March, 2018}
+\numberwithin{equation}{section}
+%\graphicspath{ {/Users/AlevG/Documents/draft proposal} }
+\setlength{\parindent}{7mm}
+\newcommand{\Int}{\int\limits}
+\providecommand{\keywords}[1]{\textit{Keywords:} #1}
+
+
+
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+\onehalfspacing
+{\footnotesize 
+In Sub-Saharan Africa use of informal financial services based on social networks is still pervasive and improvements in formal financial markets inevitably affect and shape the informal markets. This paper investigates whether mobile money usage impacts households' use of traditional saving groups in rural Kenya, namely rotating savings and credit cooperatives (ROSCAs). Using three rounds of cross-section household surveys, I estimate the effects, instrumenting for the endogenous mobile money adoption choice with the share of mobile money users in the district. I find that mobile money use has a positive and increasing effect on the likelihood of joining ROSCAs over years 2009-2015. However the effect on access to bank products and services varies; active use of mobile money has a positive but decreasing effect on bank use, whereas the effect of registration to mobile money is positive and constant over the same period. No significant effect on the use of saving and credit cooperatives (SACCOs) is detected.}
+\end{abstract}
+
+\begin{small}
+\keywords{Mobile Money; ROSCAs; rural Kenya; MLE} \\~\\
+\end{small}
+\begin{center}
+%\uline{\textit{Preliminary draft, please do not cite or circulate}}
+\end{center}
+\clearpage
+
+\section{Introduction}
+As in the developed world, households in the developing countries in Africa also need to be linked to a variety of financial services and products to maximize their consumption and cope with uncertainties in daily life, thus to invest in their future. Over the last decade, mobile phone usage has increased significantly in regions with the lowest rates of formal financial services adoption (Cull et al., 2013). The inception of mobile money technology had been an important improvement in such economies with incomplete markets. Yet many individuals in developing countries still have no access to the formal financial system. The daily activities of the developed world such as financial transfers, engaging in precautionary savings, investment and loans, and insurance are still unaffordable or inconvenient to many, keeping wide segments of societies excluded from financial markets. 
+
+Rotating savings and credit associations (ROSCAs) are one of the most prevalent forms of informal financial institutions in developing countries where specifically rural residents often have limited geographic access to commercial banks (Demirguc-Kunt and Klapper, 2012). The ROSCA, also known as the "merry-go-round", is a group of community members who gather and pool their savings into a pot that is then distributed to one member at a time (Gugerty, 2007). They exist in three continents (Bouman, 1977), and are widely used in Kenya as well, as a social commitment device against time-inconsistent behavior (Gugerty, 2007). The basic principle of ROSCAs is almost the same everywhere, and their particular characteristics respond the specific needs of their members in every community.
+
+The literature investigating the justifications for the existence of ROSCAs argued that one main reason was to view them as substitutes to insurance, where markets for insurance do not exist or function well (Calomiris and Rajaraman, 1998; Klonner, 2003). Lack of access to affordable credit and loans is another crucial reason. An important question then arises for ROSCAs as more convenient and new technologies are introduced in the rural financial markets: as more formal products and services become accessible, do current traditional services such as ROSCAs in the informal financial markets still exist? Do they substitute one another or coexist complementing each other? 
+
+Kenya's experience with information and communications technology has been remarkable compared to other Sub-Saharan African countries that adopted this technology. Kenya's mobile money operator M-PESA was introduced in 2007, which lead to a sharp fall in the rate of financially excluded households in Kenya, who have no use of any formal financial products or services, from about 40 percent in 2006 to 25 percent in 2013\footnote{Financial Sector Deepening Trust (2013), FinAccess National Survey 2013 Report.}.
+
+Mobile money users have experienced significant increase in their risk sharing and resilience to shocks in the short run, and the use of mobile money took individuals out of poverty in the long term (Jack and Suri 2014; Suri and Jack, 2016). By decreasing the cost of transfers and creating safe and cost effective space for personal savings, mobile money has been the most important contribution to the financial needs in developing world. Thus, its impacts took a well-deserved attention both in the academic literature and policy making. The question of whether mobile money complements or substitutes the already existing systems that allow individuals engage in financial activities is then a nontrivial one. 
+
+In this paper, I aim to look at the effects of households' mobile money use on participating in informal saving groups, namely ROSCAs, in rural Kenya. In order to have a clearer picture of the mechanisms through which individuals and households change their financial behavior, I also look at their use of formal financial services and products. For the empirical analysis, I use three rounds of nationally representative FinAccess Surveys (2009, 2013, and 2015) for data on households' financial behavior. 
+
+The analysis here shows that use of mobile money increases households' likelihood of joining ROSCAs over years. The estimations using the share of mobile money users in the district as the instrumental variable demonstrate a positive and increasing effect of use of mobile money on the propensity to participate in ROSCAs, indicating that mobile money use of rural Kenyans did not replace their use of already existing informal saving mechanisms. This suggests that the two financial instruments coexist, rather than substitute each other. %complete this sentence 
+
+Although, existing work mostly takes registration status into account while analyzing impacts of an innovation, here I consider two different approaches for calculating the effects of mobile money use in my analyses. I look at the effects of active use of mobile money, and also the effects of registration to mobile money, since access (official registration) does not necessarily mean usage. For each dependent variable; however, I consider one definition in order to have consistency across datasets as the survey questions had updates over cross sections. For ROSCA use, I take respondent's participation in any social saving group at the time of the survey, including ROSCAs, as the cutoff for the use of informal financial system in the household, and take them as ROSCA user households. I take households as banked households if the respondent reported having access to at least one of the bank services and products\footnote{The services and products included are Postbank account, bank account for savings or investment (which pays interest), current account with a cheque book, bank account for everyday needs but no cheque book, ATM/Debit card, and credit card.} in the household at the time of the survey. Similarly, I take households as SACCO users if the respondent reported SACCO use at the time of survey.
+
+I find that the active use of and registration to mobile money impact ROSCA participation in a similar pattern over years; however, the effect on bank use presents different patterns. Mobile money registration in the household has a similar positive effect on the likelihood of being banked over years, around 28-29 percent, whereas the positive effect of active usage of mobile money is decreasing from 24 percent in 2009 to 1 percent in 2015. This implies that although mobile money registration increases the probability of households' access to bank products and services at the same rate since the early phases of its inception, as households actively use mobile money and integrate with this innovation for a longer time, their likelihood of being banked decreases over years. This finding supports the idea that we have to consider different perspectives for usage while measuring its effects. Lastly, we do not detect a significant and meaningful effect on the use of SACCOs.
+
+The next section briefly summarizes the existing work on ROSCAs and mobile money in Sub-Saharan African countries. The third section describes data used in the empirical analysis. In Section 4 I introduce the methodology and the empirical models, and section 5 presents and discusses the empirical results. Finally, the last section concludes.
+
+
+\section{Related Work on ROSCAs and Mobile Money}
+
+ROSCAs have existed in different forms and names in various parts of the developing world for hundreds of years. According to a 2014 World Bank report, 40 percent of savers reports saving by using an informal savings clubs or a person outside the family in Sub-Saharan Africa (World Bank, 2014). This is still relatively a high number considering the recent improvements in financial inclusion area, where millions of users joined the financial system for the first time with the inception of mobile technology in the continent. 
+
+Bouman (1995) reveals that ROSCAs in Kenya are historically made up of women, as in the rest of the world. The basic principle of these informal financial institutions is almost the same everywhere, although they might have different types of agreements for the members who gather for a series of meetings and contribute to a common pot. ROSCAs are generally two kinds; the ones where the order of turn is decided by a lottery draw, known as random ROSCA, and the ones with predetermined order, known as fixed ROSCA. There are also bidding ROSCAs, where the allocation of funds is according to individual specific shocks. This one is seen as a substitute to insurance where markets for insurance do not exist, however in a strongly homogeneous ROSCA in terms of its members' vulnerability, the risk diversification might not allow such an allocation (Anderson et al., 2008).
+
+Existing studies and surveys show that participation in such saving and loan groups in rural East African communities is mostly driven by the need to raise school fees, meet medical expenses, buy food, and sometimes to start small businesses (Kimuyu, 1999). Earlier work also reported that the funds were mostly used to finance consumer durables in urban but more agricultural implements and inputs in rural areas (Aryeetey, 1997). The different level of participation in African countries may depend on the characterization of their financial markets. For example, Kimuyu (1999) in his study explains the greater ROSCA participation in Kenya relative to Tanzania as a result of different levels of market penetration. 
+
+In the literature a few studies explore why individuals join these ROSCAs, and some also reveal empirical evidence on the motives and propose explanations for them. A survey study conducted in Ethiopia, for example, states that the main motives for members are financial for the large equbs (name for Ethiopian ROSCAs) and social for the small equbs (Bisrat et al., 2012). Another study on the motives to participate in ROSCAs from a Kenyan slum proposes that it is the wife that strategically decides to join ROSCAs mainly to keep savings illiquid and away from home (Anderson et al., 2000). 
+
+Some papers introduce the idea of limited self-control as a potential rationale to explain the existence of ROSCAs in developing economies (Ambec and Treich, 2007; Gugerty, 2005). Gugerty (2005) studied this alternative rationale in Western Kenya with 70 ROSCAs. Given that saving requires self-discipline, in an economic environment lacking regular commitment technologies, such as loans or credits that have stringent repayment plans for their consumers, ROSCAs serve as commitment devices and provide individual self-control to their members. 
+
+In the development economics literature, the effects of mobile money on economic outcomes such as consumption, risk-sharing, savings, and poverty levels had been researched by many, but there are still gaps. Analyzing the impacts of and responses to the adoption of new technologies will help policymakers identify the financial environment that would allow technological innovations to grow and dominate markets. So far existing studies show us that mobile money experiences also have differed from community to community. The speed and success of adoption vary, and are closely linked to the structure of financial systems in the economies and their legal framework. In some countries, for example Tanzania, the mobile money platforms even customize their technology for group accounts specifically to help meet the needs of such saving and loan associations. However, in the case of Kenya, the core product of M-PESA is generally used by individuals, rather than groups (Access Africa, 2011), and there is no customization specific to group use.
+
+In rural communities, these saving associations sometimes need to keep the amount of cash that is not yet lent to members mostly in metal cash boxes, and/or store them in a group member's house. Similarly, the members had to keep their cash at home, or in a secret place, prior to the monthly meetings. Needless to say this carries high risk of theft. Thus, adoption of a financial tool, such as mobile money, is expected to bring changes to household financial behavior regarding different methods of saving and transferring money in an environment where informal financial services are pervasive.
+
+A few studies in the literature analyzing the interaction between mobile money and the informal financial systems in Sub-Saharan African countries give mixed results. A descriptive study from Kenya (Waweru and Kamau, 2017) associates mobile money use with an increase in the number of low-income earners saving their money with ROSCAs. Another study by Ruh (2017), looking at whether individuals keep saving informally or not, finds that mobile money works as a complement to bank account use for savings but as a substitute for informal savings. Mbiti and Weil (2011), analyzing the impact of mobile money in Kenya, also explores the same question and concludes in the same way. 
+
+While analyzing whether and why formal and informal financial instruments coexist or substitute each other in developing economies is important, it is crucial to pay attention to how we define households' usage of such services, that is, which questions in the household surveys we take into account. Mbiti and Weil (2011), for example, determine that mobile money use decreases the use of numerous informal saving mechanisms, where they included participation in ROSCAs, saving with a group of friends, savings given to a family or friend for safe-keeping, and saving by storing funds in a secret place. Therefore, their analysis does not reveal a causal relation between participating in ROSCAs and mobile money use, but rather explores the impact on a comprehensive definition of informal savings.
+
+In this paper, I will look at the coexistence of different systems from another perspective, compared to the questions explored in Mbiti and Weil (2011). I will take participation in any social saving groups including ROSCAs as the cutoff for the use of informal financial system, and use of any bank product and services as the cutoff for the use of formal financial system. Thus the main question this paper explores is whether individuals' participation in informal groups in order to engage in traditional saving systems changes, even when they access to a safer and cost effective mechanism with mobile money that allows privacy for savings\footnote{The question in FinAccess Surveys asks: "Many people belong to informal societies or group saving schemes such as, merry go round, savings and lending groups, chamas, investment clubs, clan/welfare groups to which they contribute on a regular basis.  How many do you personally belong to?" I take an answer of a positive number as a yes to household's participation in a group.}. For mobile money usage, however, unlike the literature on mobile money I consider two approaches, active use and registration, and look at the effects of each. This will allow us to consider alternative explanations for the interactions of the mentioned financial services. These approaches will be detailed in the next section. 
+
+\section{Data on Rural Households}
+
+The data on rural Kenyan households come from cross-sectional Financial Access (FinAccess) Surveys conducted in Kenya in four rounds by Financial Access Partnership (FAP) and implemented by Financial Sector Deepening (FSD) Kenya and the Central Bank of Kenya (CBK)\footnote{ FinAccess Surveys are conducted in 2006, 2009, 2013, and 2015.}. This paper uses data on rural households from the last three rounds of FinAccess Surveys; 2009, 2013, and 2015. Throughout this paper, I use mobile money and M-PESA interchangeably as the main mobile money network operator in Kenya is M-PESA\footnote{In 2009 data, M-PESA is the only available mobile money operator, thus all the users are registered to M-PESA. In 2013 data, 81 percent of the respondents registered to mobile money are registered to M-PESA (amongst Airtel Money, YuCash, and Orange Money), whereas in 2015 data this number increased to 98.3 percent.}.
+
+The FinAccess Surveys provide detailed information on socio-demographic, education, and other characteristics of Kenyans along with information on their use of financial products and services available in the market. The surveys were conducted in every province in Kenya, except North Eastern province due to insecurity in the region. Tables 1-3 summarize descriptive statistics of yearly data, dividing the samples into two first according to households' official registration to M-PESA (first two columns), then considering active use of M-PESA (third and fourth columns). The analysis here is at household level, i.e. users correspond to user households. 
+I take households with at least one household member who reported official registration to mobile money as registered users, and households with at least one member who reported that they had used mobile money in the last 12 months as active users, regardless of their registration status\footnote{The question in the FinAccess Surveys asks: "Have you used mobile money in the last 12 months?". Unfortunately, the data does not report how many mobile money accounts are in use in the household. Thus, a household with at least one member using M-PESA is taken as "M-PESA user".}. Data shows that official registration does not correspond to active usage in rural Kenya. For example, in the FinAccess 2009 data, 5 percent of the respondents that are registered to mobile money reported that they had not used mobile money in the last 12 months; whereas 38.2 percent of the respondents that had reported that they had used mobile money recently were not officially registered. In 2013 7.2 percent, in 2015 1.4 percent of registered users have no active use; whereas 17.7 percent of active users in 2013, and 8.3 percent in 2015, are not officially registered. The reason for these differences could be that a respondent can be registered to mobile money at the time of the survey; however, that does not guarantee that the account is used.  Similarly, it could be the other way around, a respondent that used mobile money during the year might have his account cancelled at the time of the survey. Therefore, it is important to consider these two questions in the surveys that measure usage in different ways, while analyzing the impacts of usage, although in the literature it is very common to look at registration status and conclude on the impacts of usage. 
+
+Data shows that M-PESA registration rose from 19.5 percent to 64.3 percent between 2009 and 2015 (it was 51.9 percent in 2013). Consistently, active users increased to 69.2 percent from 30.1 percent. We see that the majority of households, both in user and non-user groups, are in agriculture business. But the percentage of dependent households\footnote{Households are taken as dependent households when the respondent reports "money from family/friends/spouse" or "aid from agency/NGO/government assistance in form of food or grants" as the main source of income} are greater in non-user groups. Whereas more households operate their own businesses in user groups compared to non-users. Moreover, technology use and financial access is generally higher among users than it is for non-users. Specifically, the percentages of cell phone owners, use of bank products and services, having savings in the household, participating in ROSCA, SACCO, and ASCA\footnote{ASCA stands for Accumulating Savings and Credit Associations in Kenya} are higher in user groups. The statistics on ROSCA use by M-PESA use is also summarized below to take a closer look: \\
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ r  C{2.5cm}   C{1.7cm}  C{2.5cm}  C{1.7cm} C{1.7cm}}
+\hline
+      & \multicolumn{2}{c}{(Registered)} & \multicolumn{2}{c}{(Active)}  \\
+        \cmidrule(r){2-3}\cmidrule(r){4-5} 
+  \bf{ROSCA use in:} & M-PESA user & Non-user  & M-PESA user & Non-user & All  \\
+      
+\midrule
+
+\bf{2009}   &   39.1     &     31.4   &      39.7	& 30.0  &	32.9  \\
+\bf{2013}   &   27.4     &     12.7   &      27.1	& 10.8  &	20.3   \\
+\bf{2015}   &   39.5     &     18.4   &      37.8	& 18.9  &	32.0   \\
+\hline    
+\end{tabular}
+\end{table}
+
+We see that the percentage of ROSCA users in 2015 sample of rural Kenyans rises back to its level in 2009, after a drop in 2013 to 20.3 percent. The percentage of ROSCA user households who are unregistered to M-PESA decreases from 31.4 percent in 2009 to 18.4 in 2015, whereas in registered group, after a decrease in 2013 to 27.4 percent, it remained around 39 percent between 2009 and 2015. Similarly, the percentage of ROSCA participants of active M-PESA users declines in 2013 to 27.1, but stays around 37 percent in 2015. There is a similar reduction, from 30 percent to 18.9 percent, in non-users group. 
+
+
+
+
+
+\section{Empirical Methodology and Models}
+
+
+\subsection{Share of Users as the Instrumental Variable}
+
+The simple probit regressions of M-PESA use on the relevant binary dependent variables are reported in Tables 4 and 5 in the Appendix C, using registration status and active usage respectively. For the sake of discussion, I will define them as registered and active M-PESA users. The yearly estimations of the regression:
+\begin{align}
+Y_i= 1(\alpha_1 ^{'} X_{1i}+ \beta_1 M_i+ \epsilon_{1i} \ge 0)
+\end{align}
+show statistically significant estimates of coefficients and average treatment effects of being an M-PESA user household on the dependent variables; household $i$'s group participation, $group_i$ and bank use, $banked_i$, where $M_i$ is a dummy variable for M-PESA user, and $X_i$ is household and district level control variables. However, in the regressions on the impacts on SACCO use, $sacco_i$, we see insignificant estimates of effects of registered users in year 2009, and active users in 2013. Also, the significant estimations of the effects are very small (between 2 and 5 percent), relative to estimated effects on group participation and bank use. 
+
+
+In order to analyze households' financial behavior and estimate the true effects, we need to account for the endogeneity of M-PESA use. The simple estimates of M-PESA use, reported in Tables 4 and 5, give us inconsistent and biased results, since the households who are more or less likely to adopt a new technology can also be those who share some common unobserved characteristics that might make them more or less likely to participate in social groups. That is to say, the decision to participate in groups and the decision to adopt M-PESA might be correlated. Thus, the identification of the empirical models will rely on the instrumental variable (IV) strategy in a bivariate probit model, where a maximum likelihood methodology will be used to estimate the parameters. 
+
+ 
+In this analysis, I use the share of M-PESA user households in the district as the IV in the estimations\footnote{For the effect of active usage, I consider the share of active M-PESA users; and for the effect of registration, I take the share of registered users in the district.}. In order to serve as a valid instrument, a variable must be correlated with the endogenous explanatory variable, that is the M-PESA user variable, $M_i$, but uncorrelated with the error term. The estimation of the equation (4.2) shows that the share of users in the district, $share_i$, is positively correlated with a household's likelihood of being an M-PESA user. 
+\begin{align}
+M_i= 1(\alpha_2 ^{'} X_{2i}+ \beta_2 share_i+\epsilon_{2i} \ge 0)
+\end{align}\par
+Tables 6 and 7 show estimated coefficients and marginal effects on registered M-PESA use and active M-PESA use, respectively.  The significant positive effects show us that household $i$'s likelihood of active use as well as registration to M-PESA increase as the share of users in the district increases. Rural Kenyans are more likely to use mobile money as more people use it in their geographical area. Thus, the instrument is relevant to household's likelihood of being an M-PESA user.
+
+For the exclusion restriction, the share of users in the district is required to be uncorrelated with the unobservable household characteristics that influence the dependent variables, i.e. decision to participate in groups, use of bank products and services, and SACCOs. Unfortunately, there is no statistical test to econometrically check out and reveal the validity of the IV. However, we can argue the variable in the context of rural Kenya and support its validity in other ways.
+
+%%%%%%%%%%%%%%% burda kaldin
+
+%Unfortunately, we cannot rule out the possibility that there is a shared common interest in joining social groups within the district that affects households' both M-PESA adoption and participation in groups at the same time or in a certain way\footnote{Another paper using share of users of a technology or members of a service in a given area as an IV is by Demombynes and Thegeya (2012) where they look at the saving effects of M-PESA use in Kenya using data on household usage from 2010. They also mention the possibility of a similar community effect for savings that could be correlated to the community effect to adopt M-PESA.}. 
+
+The question here is why the share of mobile money users in the district would have an effect on a household's decision to join a saving group, or use banks and SACCOs. Why would a rural Kenyan be more or less likely to use certain kinds of financial instruments (except mobile money) when more or less households use mobile money in their district? For example, if more and more households register or actively use mobile money around a household, we would expect that this would affect their decision by motivating them to adopt mobile money in order to stay up to date to connect their network, as we already see in the estimation results of equation (4.2). However, for a direct impact of others' use of mobile money on their own participation in saving groups, for example, there should be an explicit connection between the choice of mobile money use as a group and the structure of saving groups. On the contrary, the core product of M-PESA in Kenya has no customization specific to group use, and is generally used by individuals, in contrast to Tanzanian experience with mobile money (Access Africa, 2011).
+
+Nonetheless, if we still consider the possibility of a similar community effect for using other informal or formal financial products and services that could be correlated to the community effect to adopt M-PESA, we should expect a negative effect of others' use of mobile money. The fact that as more and more other households in the area move to digitizing their payments, transfers, and savings through mobile money, the demand for traditional services, such as saving groups, and for more complex formal products and services might fall, making households less likely to use those services. This would eventually lead an underestimation of our estimation results in this analysis.
+
+
+Second, in order to strengthen my argument for the validity of share of users variable as an IV, I make use of the empirical analysis and models introduced in the first chapter\footnote{The first chapter of this dissertation is the paper "Mobile Money and Savings in Rural Kenya" (2017).}. In that paper, I explore the saving effects of M-PESA using the FinAccess 2013 Survey. I use households' distance to M-PESA agents as the IV and estimate the impact of M-PESA use first on the likelihood of being a saver household, second on the self-reported average monthly savings per capita.
+
+The distance variable is not used as the IV in this paper's analysis, because we do not have access to data on the growth of M-PESA agents' network over the period 2009-2015. I have access to agents' GPS coordinates only in 2013, thus it was employable in the paper analyzing rural Kenyans' saving behavior in 2013. There, I  exhibit two supporting arguments\footnote{In the paper "Mobile Money and Savings in Rural Kenya", I have two arguments supporting the exclusion restriction: First, I show that the saving outcome variables of rural Kenyan households in 2006, before the inception of M-PESA in Kenya, are not correlated with their hypothetical distance to the agents in 2013. This suggests that households' location and distance to the agents in 2013 are not affecting their saving behavior in an unobserved way. Second, following the framework in Slichter (2014) and Altonji et al. (2005), I consider a subsample of households for whom the distance variable is not relevant to their M-PESA use - banked households in the top two wealth quintile in the sample, who are claimed to be the early adopters of mobile money (Jack and Suri, 2011). The intuition is that once the relevance of the instrument is gone, a valid instrument should have no causal relation to the outcome variable, which is the case here. Thus, distance to the closest M-PESA agent in rural Kenya is plausibly affecting the outcome variables only through its effect on M-PESA use.} for the validity of distance variable as an IV in 2013 rural Kenyan context, and here I re-estimate the empirical models introduced in the first chapter but this time by using the share of users as the IV. The goal is to see whether using share of users as the IV gives us consistent results in the saving behavior analysis.
+
+I find that the estimation results applying share of users as the IV are consistent with the results reported in the first chapter using distance variable as the IV. Table 8 presents the results of estimations with different IVs for the bivariate probit model considering both M-PESA registration and active use status. This finding supports that share of users, like distance variable, is plausibly an exogenous variable and works as a valid IV in the context of rural Kenya. 
+
+
+
+
+\subsection{Empirical Model}
+
+The causal relation of M-PESA use with other financial instruments will be identified in a bivariate probit model with an endogenous binary independent variable of being an M-PESA user, $M_i$. I explore whether having an M-PESA user in the household has an impact on the household's decision to participate in social groups, i.e. ROSCAs, and then use of other financial products, such as bank accounts, and SACCOs. For simplicity, I will use group participation as the dependent variable to explain the empirical model. First, we assume household $i$ receives the net benefit from being in a group, $group_i^*$, defined as:
+\begin{align}
+group_i^{*}= \alpha_1 ^{'} X_{1i}+ \beta_1 M_i+ \epsilon_{1i}
+\end{align}
+where $X_{1i}$ is a covariate vector of income, and other observable characteristics of the household as well as regional dummies. The latent error term, $\epsilon_{1i}$, is assumed to be a normally distributed random error with zero mean and unit variance. However, the net benefit from being in a group is not observed. Instead, we observe the binary outcome $group_i$ that depicts whether the household is in a group or not:
+\begin{align}
+group_i= 1(\alpha_1 ^{'} X_{1i}+ \beta_1 M_i+ \epsilon_{1i} \ge 0)
+\end{align}
+\par
+Here, the decision to be an M-PESA user is endogenous, given that households who choose to adopt M-PESA might have different propensities to save than those who do not. Therefore, one cannot estimate unbiased parameters for equation (4.4). In order to deal with the fact that these decisions may be linked, I estimate a two-equation model. Similarly, there is an unobserved net benefit from using M-PESA, $M_i^{*}$.
+\begin{align}
+M_i^{*}= \alpha_2 ^{'} X_{2i}+ \beta_2 share_i+\epsilon_{2i}
+\end{align}
+where $X_{2i}$ is a covariates vector and the latent error term, $\epsilon_{2i}$, is a normally distributed random error with zero mean and unit variance. $share_i$, the instrumental variable accounting for the endogeneity of M-PESA use, is the share of the M-PESA user households in the district. We cannot observe or measure household's net benefit, $M_i^*$, but we see whether the household is an M-PESA user or not, that is the binary variable $M_i$.
+\begin{align}
+M_i= 1(\alpha_2 ^{'} X_{2i}+ \beta_2 share_i+\epsilon_{2i} \ge 0)
+\end{align}\par
+This two-equation model with two discrete dependent variables and a binary endogenous regressor assumes that the independently and identically distributed latent error terms, $\epsilon_{1i}$ and $\epsilon_{2i}$, have a bivariate normal distribution with zero mean, and the covariance matrix $\Sigma$. Thus, we have:
+\begin{center}
+$\epsilon_{1i}$, ${\epsilon_{2i}}$  $\sim$ N($\mu$,$\Sigma)$ and $\mu= \left( \begin{matrix} 0&0\end{matrix} \right)$, $\Sigma= \left( \begin{matrix} 1&\rho\\ \rho&1\end{matrix} \right)$
+\end{center}
+\par
+
+When the correlation between two error terms is not zero ($\rho\neq$0), the separate probit regressions of the equations (4.2) and (4.4) lead to inconsistent estimates for the parameters. In order to overcome the endogeneity issue, a bivariate probit model can be estimated with the maximum likelihood (ML) method, where the likelihood function associated with the model will be maximized\footnote{Following Chiburis, Das, and Lokshin (2011).}. The derivation of the likelihood function of the model can be found in the Appendix A.
+
+In order to answer the question whether mobile money use affects households' decision to join saving groups in the area, we need to look at households' use of other financial tools, especially the ones that are related to saving behavior. For this reason, I apply the empirical model explained above to explore the effects on SACCO use ($sacco_i$), and being banked ($banked_i$).
+
+
+\section{Empirical Results and Discussion}
+
+The effects of M-PESA registration and usage on the use of informal and formal financial products and services are estimated in bivariate probit models, where the share of users in the district is used as the exogenous variable. I ran the econometric models on yearly data and analyze the effects yearly. After estimating the coefficients, I calculated the average treatment effect (ATE) and average treatment effect on the treated (ATT)\footnote{After calculating estimated coefficients in a biprobit model, I followed Chiburis et al. (2011) for the calculation of ATE and ATT where they use Stata command biprobittreat.}. The results are summarized in Tables 9-17. I will summarize the findings in subsections below, and then discuss.
+
+\subsection{Registration Analysis}
+
+The estimation results show that having at least one registered M-PESA user in the household has a significant and negative (2.6 percent) impact on the likelihood of being in a group in 2009 (Table 9, Column 1, bottom row). But the effect is significantly positive and increasing over years 2013 and 2015, making users 19 percent more likely to join ROSCAs in 2013, and 48 percent in 2015.
+Second, the impact of M-PESA registration on the likelihood of having access to bank products and services in the household stays constant over years, making registered households around 28-29 percent more likely to be banked (Tables 12-14, first columns and bottom rows).
+Lastly, we see that the registration of M-PESA does not have a significant impact on the likelihood of using SACCOs in rural Kenya (Tables 15-17, first columns and bottom rows).
+
+
+\subsection{Active Use Analysis}
+
+I find that having at least one active user in the household increases the likelihood of being in a group and this effect is increasing over time from 3 percent in 2009 to 15 percent in 2013, and 45 percent in 2015 (Tables 9-11, Column 3, bottom rows). Although, the impact of M-PESA registration on being a banked household stays constant, the effect of active use of M-PESA shows a different pattern over years. We see a tremendous and significant decrease in the likelihood of being banked, from 24 percent in 2009 to 6 percent in 2013, and 1 percent in 2015. Coming to impacts on SACCO use, we find that the active use of M-PESA does not have a significant impact on the likelihood of using SACCOs in 2009 and 2015, whereas in 2013 active M-PESA users are significantly 30 percent less likely to use SACCO services. However, this finding alone is not sufficient to explain a pattern for SACCO effects, thus we do not consider it as a meaningful effect.
+
+
+\subsection{Discussion}
+
+The empirical models reveal three main results. First, the effect of M-PESA on ROSCA participation increases over years and it shows similar patterns for the effects of registration and active use. Second, the impacts on access to bank products and services in the household vary depending on our approach for usage. The effect of M-PESA registration on being a banked household stays constant over years; however, the positive effect of using M-PESA actively decreases significantly over the same period. So here, the definition of M-PESA use matters more. Lastly, the use of M-PESA does not show a significant impact on the likelihood of using SACCOs in rural Kenya.
+
+There are possible mechanisms driving these results. First of all, the negative and then increasing positive impact of M-PESA registration on joining groups can be explained by the fact that in the early stages of its inception, mobile money registration replaced the use of informal insurance and network systems. Moreover, we see that the estimated correlation between the two decisions, the decision to adopt/use M-PESA and the decision to participate in a social group, is found positive in 2009, but negative in the following rounds (as reported in Tables 9-11). This implies that Kenyans who were more likely to use M-PESA in 2009 were also the ones who were more likely to participate in ROSCAs, therefore, M-PESA usage did not increase the likelihood of participating in ROSCAs as much. In 2009 results, we see that the effect is 3 percent increase for active users, but 2 percent decrease for registered users, which implies that only official M-PESA registration worked as a substitute for ROSCA participation in the early stages of its inception.
+
+However, over time, the relation between M-PESA and ROSCA use in 2009 seems to have flipped and M-PESA use made households more and more likely to participate in ROSCAs. This could be because as the easiness and accessibility of the technology improved, mobile money behaved as a complement to the informal networks and increased the likelihood of joining such saving schemes in the villages. This could also be explained by the fact that ROSCA users benefit from increased security and easiness of saving and transferring their monthly contributions via their mobile money accounts. This is also reflected in the biprobit estimations, and the negative estimated correlation between two decisions in 2013 and 2015 data. Households who are less likely to be in groups are the ones who are more likely to use M-PESA in 2013 and 2015 data and M-PESA use has an increasing positive impact on the likelihood of participating in groups. 
+
+Next, the effect of mobile money registration on the use of banks is measured approximately same over 2009-2015 period. This similarity in the yearly estimated effects shows that the effect of opening mobile money accounts impacts households' tendency to open bank accounts, and use various bank products and services in the same way over years, possibly by improving their financial capabilities \footnote{Financial capability is explained as "the capacity of a consumer to make informed decisions and act in one's best financial interest, given socioeconomic and environmental conditions" (World Bank, 2013).}. However, this result does not seem to hold for active usage of mobile money. M-PESA registration and active usage show strikingly different patterns of impacts on use of bank products and services. We see that the positive effect of actively using mobile money on the likelihood of being banked significantly decreases over years, from 24 percent to 1 percent (almost no effect). That is to say, although M-PESA registration increases the likelihood of being banked, as households actively use M-PESA their propensity to be banked decreases over time. Thus, almost 8 years after its inception, the active use of mobile money in rural Kenya seems to be replacing with households' access to more complex financial products and services. Here as well, the estimation of the correlation between the two decisions, use of M-PESA and use of bank products and services, is consistent with the patterns of the estimated effects.
+
+Lastly, we see a significant negative impact on SACCO use in 2013 data, and since this is the only significant coefficient, it is difficult to interpret SACCO results. It  could suggest that the cost effective and safe storage mechanisms M-PESA introduced had made the other relatively costly and formal alternatives to save, such as SACCOs, less attractive for the rural Kenyans over years and they replaced SACCO use with M-PESA for saving purposes in 2013 (Table 16, Column 3). However, since we don't see this negative effect after 2013, it is not enough to conclude on that. This decrease in the likelihood of using SACCOs for M-PESA users could also be related to the accessibility and availability of SACCOs in Kenya around year 2013. The World Council of Credit Unions (WOCCU) reported the number of credit unions (namely SACCOs) in Kenya as 5,000 for both in 2012 and 2013 and as 4,965 in 2014. Except these years, the number of credit unions increased in Kenya from 2009 to 2016 with no other exception (WOCCU Report, 2016)\footnote{The World Council of Credit Unions (WOCCU) is the global trade association and development agency for credit unions and financial cooperatives.}. Other than this, our analysis does not have enough argument for clarifying this estimation result.
+
+All in all, the yearly estimations of M-PESA impacts on the use of more traditional informal services, and of more complicated financial services show the evolution of rural Kenyans' mobile money usage, confirming the importance and role of informal social groups in the rural economies in Sub-Saharan Africa presented in the literature. The findings suggest that the interaction of rural Kenyans' use of financial products and services seem to change over time as the financial markets evolve. 
+
+\section{Concluding Remarks}
+
+This paper explores the effects of mobile money use on the use of traditional financial services, ROSCAs, in rural Kenya, using three rounds of household survey data between years 2009-2015. 
+%By considering different definitions for mobile money usage, I try to explain the effects in detail and aim to bring different perspectives in the understanding of "usage". The first definition takes the households with a member officially registered to M-PESA as users (registered M-PESA user). The second one focuses on the reported usage and takes the households with a member who reported that they had used mobile money recently (in the last 12 months) as users (active M-PESA user), regardless of their registration status.
+Using an instrumental variable approach, I estimated the causal effect of M-PESA use on households' participation in saving groups, and also on their use of formal financial products, such as bank products and services, and SACCO use. I instrument for endogeneous choice of M-PESA use with the share of users in the district and discuss its validity considering the empirical models and the IV introduced in the first chapter of this dissertation. I show that the estimated effects are consistent with each other when we apply first households' distance to the closest agent as the IV and then the share of users in the district, suggesting the validity of the IV in this paper.
+
+
+%The empirical analysis shows that the use of M-PESA in the household has a positive and increasing effect on the likelihood of joining ROSCAs of the households over years, regardless of the definition of the usage. Active use of M-PESA increases the likelihood of ROSCA participation by 3 percent 2009, 15 percent in 2013, and 45 percent in 2015; whereas registration decreases the likelihood of ROSCA participation in 2009 by 2 percent but then increases, more than active usage does, by 19 percent in 2013 and 48 percent in 2015. This finding suggests that in its early stages of inception, M-PESA registration serves as a substitute for households' participation in informal groups, although it is not a huge impact, it is decreasing their likelihood. However, over years this effect flips and increases M-PESA users' participation in informal groups, implying a complementary relation between M-PESA and ROSCA use. 
+
+
+One possible explanation for the increasing positive effect on ROSCA use over years could be that households adapted the easiness and advantages of mobile money use in more aspects of daily life, and combined it with traditional approaches, rather than substitute each other. The fact that M-PESA users, either registered or active users, keep participating in such groups can also be explained by the "self-control" mechanism introduced in the literature (Ambec and Treich, 2007; Gugerty, 2005) and summarized previously in Section 2. Mobile money use is a relatively private activity compared to participating in saving groups and many individuals need more than access to a safe space in order to regularly engage in precautionary savings, and control their finances.
+
+We see that over years the impact of active use of mobile money shows a completely different pattern than the impact of mobile money registration on households' use of banks. This suggests that M-PESA registration works as a complement to bank products and services; however as households use mobile money their accounts actively, and are more capable of their finances, their need to access more formal financial systems reduces over years.
+
+
+Inevitably, mobile money had changed and shaped rural Kenyans' financial capabilities, and thus financial behavior and decisions. Moreover, the patterns for the interactions of mobile money with other informal and formal products and services evolve over time. The experiences of households with mobile money vary from society to society in developing world and this paper contributes to the literature by considering different approaches to measure the impacts of mobile money usage which allows alternative explanations for the mechanisms of the interactions in financial markets. 
+
+
+
+
+\clearpage
+\bibliographystyle{apacite}
+\footnotesize
+\bibliography{bib_thirdpaper}
+\nocite{*}
+
+\clearpage
+\appendix
+
+\footnotesize
+%\singlespacing
+
+\section{Log-likelihood Function of the Bivariate Probit Model}
+We have a 2-equation limited dependent variables model with a binary endogenous variable.
+\begin{align}
+group_i= 1(\alpha_1 ^{'} X_{1i}+ \beta_1 M_i+ \epsilon_{1i} \ge 0) \\
+M_i= 1(\alpha_2 ^{'} X_{2i}+ \beta_2 share_i+\epsilon_{2i} \ge 0)
+\end{align}
+where
+\begin{center}
+$\epsilon_{1i}$, ${\epsilon_{2i}}$  $\sim$ N($\mu$,$\Sigma)$ and $\mu= \left( \begin{matrix} 0&0\end{matrix} \right)$, $\Sigma= \left( \begin{matrix} 1&\rho\\ \rho&1\end{matrix} \right)$
+\end{center}
+\par
+
+There are four possible cases of $(group_i, M_i)$ for every $i$. The log-likelihood function will be the logarithm of the combination of the likelihood functions corresponding to each case. $\phi(.)$ represents the normal probability density function.
+\begin{equation}
+P(group_i=1, M_i=1)=\Int_{-(\alpha_1 ^{'} X_{1i}+ \beta_1 M_i)}^{\infty} \Int_{-(\alpha_2 ^{'} X_{2i}+ \beta_2 share_i)}^{\infty} \phi {(\epsilon_{1i} , \epsilon_{2i})} \, d\epsilon_{1i} d\epsilon_{2i}\\
+\end{equation}
+\begin{equation}
+P(group_i=1, M_i=0)=\Int_{-(\alpha_1 ^{'} X_{1i}+ \beta_1 M_i)}^{\infty} \Int_{-\infty}^{-(\alpha_2 ^{'} X_{2i}+ \beta_2 share_i)} \phi {(\epsilon_{1i} , \epsilon_{2i})} \, d\epsilon_{1i} d\epsilon_{2i}
+\end{equation}
+\begin{equation}
+P(group_i=0, M_i=1)=\Int_{-\infty}^{-(\alpha_1 ^{'} X_{1i}+ \beta_1 M_i)} \Int_{-(\alpha_2 ^{'} X_{2i}+ \beta_2 share_i)}^{\infty} \phi {(\epsilon_{1i} , \epsilon_{2i})} \, d\epsilon_{1i} d\epsilon_{2i}\\
+\end{equation}
+\begin{equation}
+P(group_i=0, M_i=0)=\Int_{-\infty}^{-(\alpha_1 ^{'} X_{1i}+ \beta_1 M_i)}\Int_{-\infty}^{-(\alpha_2 ^{'} X_{2i}+ \beta_2 share_i)} \phi {(\epsilon_{1i} , \epsilon_{2i})} \, d\epsilon_{1i} d\epsilon_{2i}
+\end{equation}
+
+\section{ATE and ATT calculations}
+
+In the Bivariate Probit Model, the average treatment effect (ATE) is, for a random household in the sample, the average difference between the probability that the household would join a social group if the household was an M-PESA user household and the probability that the household would join a group if the household was not an M-PESA user household. It is defined as: 
+\begin{equation}
+ATE= E[group_{i1} - group_{i0}]
+\end{equation}
+where $g_{i1}$ denotes the propensity to join a social group if the household is an M-PESA user and $g_{i0}$ is the propensity to join a social group if the household is a non-user. In the bivariate probit model, it is calculated as:
+\begin{equation}
+\widehat{ATE}= \frac{1}{N} \sum_{n=1}^{N} [ \Phi(\alpha_1 ^{'} X_{1i}+ \beta_1) -  \Phi(\alpha_1 ^{'} X_{1i})  ]
+\end{equation}
+
+The average treatment on the treated (ATT) is the average effect of being an M-PESA user household on the probability to join a social group only on those who actually are M-PESA user households. Thus, it is defined as:
+\begin{equation}
+ATT= E[group_{i1} - group_{i0} | M_i =1 ]
+\end{equation}
+and calculated as:
+\begin{equation}
+\widehat{ATT}=  ( \sum_{n=1}^{N} M_i )^{-1} \sum_{n=1}^{N} M_i * [ \Phi(\alpha_1 ^{'} X_{1i}+ \beta_1) -  \Phi(\alpha_1 ^{'} X_{1i})  ]
+\end{equation}
+
+For the standard errors of the ATE and ATT, I used the Delta Method (Greene, 2011) and the calculations are as the following:
+\begin{equation}
+var(\widehat{ATE})= (\frac{\partial \widehat{ATE}}{\partial \beta_1})^{'} var(\beta_1)  (\frac{\partial \widehat{ATE}}{\partial \beta_1})
+\end{equation}
+
+\begin{equation}
+var(\widehat{ATT})= (\frac{\partial \widehat{ATT}}{\partial \beta_1})^{'} var(\beta_1)  (\frac{\partial \widehat{ATT}}{\partial \beta_1})
+\end{equation}
+where 
+\begin{equation*}
+\frac{\partial \widehat{ATE}}{\partial \beta_1} = \frac{1}{N} \sum_{n=1}^{N}  \phi(\alpha_1 ^{'} X_{1i}+ \beta_1)
+\end{equation*} 
+\begin{equation*}
+\frac{\partial \widehat{ATT}}{\partial \beta_1} =  ( \sum_{n=1}^{N} M_i )^{-1} \sum_{n=1}^{N} [M_i *  \phi(\alpha_1 ^{'} X_{1i}+ \beta_1)]
+\end{equation*}
+
+\clearpage
+
+\section{Tables and Figures}
+
+\centering
+\footnotesize
+\singlespacing
+\input{SumStat2009.tex}
+\input{SumStat2013.tex}
+\input{SumStat2015.tex}
+ \input{table_years_probit_reg.tex}
+ \input{table_years_probit_act.tex}
+\input{table_iv_reg.tex}
+\input{table_iv_act.tex}
+       
+\input{test_reg_act.tex}
+       
+\clearpage
+ \input{2009_biprobit_groups.tex}
+ %\clearpage
+ \input{2013_biprobit_groups.tex}
+ %\clearpage
+ \input{2015_biprobit_groups.tex}
+ %\clearpage
+ \input{2009_biprobit_banked.tex}
+ %\clearpage
+ \input{2013_biprobit_banked.tex}
+ \clearpage
+ \input{2015_biprobit_banked.tex}
+ \clearpage
+ \input{2009_biprobit_sacco.tex}
+ \clearpage
+ \input{2013_biprobit_sacco.tex}
+ \clearpage
+ \input{2015_biprobit_sacco.tex}
+ \clearpage
+
+
+      \begin{comment}
+\begin{table}
+\centering
+\footnotesize
+\singlespacing
+\captionof{table}{Probit Regression Results (Registered M-PESA user)} 
+\input{years_rural_probit_reg.tex}
+\end{table}
+\begin{table}
+\centering
+\footnotesize
+\singlespacing
+\captionof{table}{Probit Regression Results (Active M-PESA user)} 
+\input{years_rural_probit_act.tex}
+\end{table}
+       \end{comment} 
+%latex
+%bibtex
+%latex
+%Latex
+
+\end{document}
+
+
