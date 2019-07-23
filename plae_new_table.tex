@@ -1,0 +1,36 @@
+\begin{table}
+\centering
+  \begin{threeparttable}
+\newcommand{\oneS}{\ensuremath{{}^{\textstyle *}}}
+\newcommand{\twoS}{\ensuremath{{}^{\textstyle **}}}
+\newcommand{\threeS}{\ensuremath{{}^{\textstyle ***}}}
+\centering
+\fontsize{9.5}{12} \selectfont
+
+\singlespacing
+\captionof{table}{The Placebo Test for the Instrumental Variable} 
+\begin{tabular}{ l  C{1.4cm}  C{1.4cm}  C{1.4cm}  C{1.4cm} C{1.4cm}  C{1.4cm} C{1.4cm} C{1.4cm}} 
+\toprule
+           & \multicolumn{2}{c}{Registered}     &  \multicolumn{2}{c}{Active}      &  &  &  &\\
+           & \multicolumn{2}{c}{M-PESA user }     &  \multicolumn{2}{c}{M-PESA user }      &  \multicolumn{2}{c}{Saver}   &  \multicolumn{2}{c}{Savings}   \\
+
+            & \multicolumn{2}{c}{(Probit)} & \multicolumn{2}{c}{(Probit)} &  \multicolumn{2}{c}{(Probit)} &  \multicolumn{2}{c}{(Tobit)} \\
+                        \cmidrule(r){2-3}\cmidrule(r){4-5}\cmidrule(r){6-7} \cmidrule(r){8-9}
+                  & (Coef.)    &  (M.E.)    & (Coef.)    &  (M.E.)       & (Coef.)    &  (M.E.)  & (Coef.)    &  (M.E.)     \\
+      \midrule
+Distance $(D_i)$     &  -0.03          &    -0.005            & -0.001      &    -0.0002      & -0.032     &      -0.008           &  -243.93      &  -103.71          \\
+                                &     (0.025)   &      (0.004)          &     (0.02)   &    (0.004)      & (0.02)       &      (0.006)         &   (222.53)    &    (92.25)                \\
+Controls                   &     YES        &               &     YES     &          &    YES      &               &   YES      &          \\~\\
+\it{$\%$ Treated }          & 90 &  & 90 &   & 90 &  & 90  &   \\
+\it{Censored Observations}      & -   &   & -   &  &   -        &            &   141 & \\                     
+\it{Observations}      & 	569  &     & 	569 &    &   569    &         &  569    &  \\
+\it{Log-likelihood}     &  -180.85   &  &  -153.28 &    &   -269.82    &  &  -4124.22    &\\
+\\
+\bottomrule
+\end{tabular}
+    \begin{tablenotes}
+      \footnotesize
+\item Notes: Controls: Income, female household head, household head's age, maximum level of education in the household, distance to the closest bank, unexpected financial risks in the last 12 months, regional dummies. $\$1$= 102.65 Kshs. Standard errors clustered in district level in parentheses. $* p<0.1$, $** p<0.05$, $*** p<0.01$.
+    \end{tablenotes}
+  \end{threeparttable}
+\end{table}
