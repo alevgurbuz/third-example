@@ -30,3 +30,4 @@ replace a=1 if b=1
 ** test
 ** new comment
 
+** this is a bad commit
