@@ -31,3 +31,5 @@ replace a=1 if b=1
 ** new comment
 
 ** this is a bad commit
+
+** also bad
