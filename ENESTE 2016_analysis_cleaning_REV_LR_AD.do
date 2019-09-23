@@ -24,7 +24,7 @@ if c(username)=="kotch" {
 }
 * Lea
 if c(username)=="WB459476" {
-	cd "C:\Users\wb459476\OneDrive - WBG\Economic Update CIV\Analysis"
+	cd "C:\Users\wb459476\Box Sync\Economic Update CIV\Analysis"
 }
 * Aletheia
 if c(username)=="wb468235" {
@@ -532,22 +532,20 @@ save "${cleanext}/${bprefix}_Culture_superficie", replace
 		replace Prod_conv_factor=mode_conv if missing(Prod_conv_factor)
 		drop mode_conv
 // drop outlier		
-
 	GetOutlier Prod_conv_factor
 		egen P_98=pctile(Prod_conv_factor), p(98)
 		replace outlier_Prod_conv_factor=2 if Prod_conv_factor> P_98 &!missing(Prod_conv_factor)
 		replace Prod_conv_factor=.x if  outlier_Prod_conv_factor==2
 		drop  P_98	
-
 				gen prod_kg=h22a*Prod_conv_factor
 				label var prod_kg  "Production en kg"
-/*
-	GetOutlier prod_kg
+				
+/*	GetOutlier prod_kg
 		egen P_98=pctile(prod_kg), p(98)
 		replace outlier_prod_kg=2 if prod_kg> P_98 &!missing(prod_kg)
-		*replace prod_kg=P_98 if  outlier_prod_kg==2
+		replace prod_kg=P_98 if  outlier_prod_kg==2
 		drop  P_98
-	*/
+*/		
 	*--- Prix de vente
 		recode h25a h26(99999  99999.99 9999999 0 =.x)
 		gen sales_kg= h25a*Prod_conv_factor		//quantité vendue en kg avec les facteurs de conversion disponible
@@ -579,23 +577,20 @@ save "${cleanext}/${bprefix}_Culture_superficie", replace
 		replace vente_prix_unitaire= 400 	if missing(vente_prix_unitaire)& h19b_codeculture==35 		// pomme de terre
 
 // drop outlier		
-/*
-	GetOutlier vente_prix_unitaire
+/*	GetOutlier vente_prix_unitaire
 		egen P_98=pctile(vente_prix_unitaire), p(98)
-		*replace outlier_vente_prix_unitaire=2 if vente_prix_unitaire> P_98 &!missing(vente_prix_unitaire)
+		replace outlier_vente_prix_unitaire=2 if vente_prix_unitaire> P_98 &!missing(vente_prix_unitaire)
 		replace vente_prix_unitaire=.x if  outlier_vente_prix_unitaire==2
-		drop  P_98	
-*/
+		drop  P_98	*/
 * valeur de la production en FCFA
 	gen prod_cfa=prod_kg*vente_prix_unitaire
 	label var prod_cfa 				"Valeur de la production en FCFA"
-/*
-GetOutlier prod_cfa
+
+/*GetOutlier prod_cfa
 		egen P_98=pctile(prod_cfa), p(98)
 		replace outlier_prod_cfa=2 if prod_cfa> P_98 &!missing(prod_cfa)
 		replace prod_cfa=P_98 if  outlier_prod_cfa==2
-		drop  P_98
-		*/
+		drop  P_98*/
 collapse (sum) prod_kg prod_cfa vente_cfa sales_kg ,by(hh1 hh2 h19b_codeculture)
 	*recode prod_kg* prod_cfa* (0=.)
 
@@ -640,10 +635,9 @@ merge 1:1 hh1 hh2 using "${cleanext}/${bprefix}_PlotDetail_HH_level"
 	label var superficie_ha_vivre 		"Superficie totale en ha culture vivrière"
 	label var superficie_ha_rente		"Superficie totale en ha culture de rente"
 	
-recode superficie_ha_vivre superficie_ha_rente (0=.x)
+recode superficie_ha_vivre superficie_ha_rente superficie_ha_total(0=.x)
 // BASIC CLEANING
-
-	foreach xvar of varlist superficie_ha_vivre superficie_ha_rente {
+	foreach xvar of varlist superficie_ha_vivre superficie_ha_rente superficie_ha_total {
 	GetOutlier `xvar'
 		egen P_98_`xvar'=pctile(`xvar'), p(98)
 		replace outlier_`xvar'=2 if `xvar'> P_98_`xvar' &!missing(`xvar')
@@ -662,7 +656,7 @@ recode superficie_ha_vivre superficie_ha_rente (0=.x)
 								  prod_cfa42 prod_cfa43 prod_cfa46 prod_cfa47 prod_cfa48 prod_cfa99)
 	
 	
-
+	
 // BASIC CLEANING
 	foreach xvar of varlist prod_cfa prod_cfa_rente prod_cfa_vivre  {
 	GetOutlier `xvar'
@@ -670,7 +664,6 @@ recode superficie_ha_vivre superficie_ha_rente (0=.x)
 		replace outlier_`xvar'=2 if `xvar'> P_98_`xvar' &!missing(`xvar')
 		replace `xvar'= . if outlier_`xvar'==2
  }
-
 	
 // productivité 
 	gen rendement=prod_kg/superficie_ha_total
